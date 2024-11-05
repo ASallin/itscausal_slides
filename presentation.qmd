@@ -35,7 +35,47 @@ knitr::opts_chunk$set(class.source = "chunkstyle")
 ::: {.incremental}
 - **Problem:** In many real-world scenarios, finding a credible control group to evaluate a policy is not feasible.
 - **Example:**. Health care policies often affect all providers simultaneously, like changes in physician compensation or changes in guidelines.
-- **Challenge:** Standard methods, such as before-after comparisons or interrupted time-series (ITS), may produce biased estimates because of poor prediction, poor forecasting, and simplification assumptions with panel data.
+
+![](img/bloodtest.jfif){height=200px width=auto .fragment}  ![](img/mri.jpg){height=200px width=auto .fragment} ![](img/syphilis.jpg){height=200px width=auto .fragment}
+
+- **Challenge:**  Standard interrupted time-series (ITS) may produce biased estimates because of poor prediction, poor forecasting, and simplification assumptions with panel data.
+
+:::
+
+::: {.notes}
+No staggered intervention, no control group, no Diff-in-Diff
+No untreated units: forecast the counterfactual.
+
+Congenital syphilis (mother-to-child transmission or vertical transmission of syphilis of syphilis) causes damage to the fetus if the mother's infection is not detected and properly treated during pregnancy.
+
+October of 2016: “Syphilis No!” Project in Brazil
+:::
+
+
+
+---
+
+## The use of ITS in the evaluation of health system interventions has increased considerably
+
+::: {.incremental}
+
+<!--
+<div style="text-align: center;">
+  ![](img/bmjgh-2020-October-5-10--F6.large.jpg){height=350px .fragment}
+</div>
+-->
+
+**"The risk of bias for ITS studies was high for 53.3% and very high for 19.2%". (@hategeka2020use, N = 120, 1990-2020)**
+
+- The intervention was dependent of other changes.
+- Time series techniques were not propertly used.
+- Trends and time-dependent covariates were not correctly specified.
+- ...
+
+::: {.notes}
+See also @turner2021comparison
+:::
+
 :::
 
 ---
@@ -44,11 +84,18 @@ knitr::opts_chunk$set(class.source = "chunkstyle")
 
 ::: {.incremental}
 - **Key Idea:**
-  - Interrupted Time Series are heavily used in real world evidence, public health, health services research, and health economics, and epidemiological research, but little guidance on how to use it.
-  - Extend the limited "work-horse" model with a machine learning-based method to address the "no control group" scenario and better forecast the counterfactual
-  <!--Problem: its targets one average effect -->
-  <!--- No untreated units: forecast the counterfactual.-->
-  - Tailored for panel data such as health insurance claims data, where the number of units is larger than the number of time periods.
+  - Provide guidance on the application of Interrupted Time Series
+  - Enhance the traditional model with a machine learning-based method to address the "no control group" scenario and improve counterfactual forecasting.
+  - Tailor the method to panel data where the number of units exceeds the number of time periods.
+
+::: {.notes}
+Widely used in real-world evidence, public health, health services research, health economics, and epidemiology.
+
+Health insurance claims,
+
+Problem: its targets one average effect
+No untreated units: forecast the counterfactual.
+:::
 
 <div class="small-space"></div>
 
@@ -89,12 +136,10 @@ nocite: |
 
 ::: {style="font-size: 80%;"}
   - Monitor the effects of population-level interventions using rich (panel) claims data.
-  - Example: **interventions against low-value care (Vit. D testing) in Switzerland**.
+  - Example: **two population-level interventions against low-value care (Vit. D testing) in Switzerland**.
 :::
 
-::: {.incremental}
-![Two interventions against low-value care (Vit. D testing) in Switzerland (N=209493 physicians-months)](img/figure1.png){.fragment width=90%}
-:::
+![](img/figure1.png){.fragment width=90%}
 
 :::
 
@@ -109,12 +154,14 @@ nocite: |
 :::: {.columns}
 ::: {.column width="50%"}
 
+::: {style="font-size: 80%;"}
+
 <div class="middle-space"></div>
 
-::: {style="font-size: 80%;"}
-- Use of **ML learners** (random forest, gradient boosting, neural networks, catboost, lstm) with hyperparameters tuning.
-- **Rolling-window** approach to make forecasts post-interventions, allowing for time-invariant and time-variant predictors.
-- The effect is the difference between the observed and the forecasted value.
+
+- **ML learners** (random forest, gradient boosting, neural networks, catboost, lstm) with hyperparameters tuning.
+- **Rolling-window approach** for post-intervention forecasts with time-variant and invariant predictors.
+- Effect computed as the difference between the observed and the forecasted values.
 - **Simulations** of different data-generating processes show good performance.
 :::
 
@@ -134,14 +181,14 @@ nocite: |
 <div class="middle-space"></div>
 
 ::: {style="font-size: 80%;"}
-  - We benchmark our method with **experimental evidence**:
+  - We benchmark our method with **experimental evidence**
 
     -  Randomized controlled trial: Primary Care Physicians in Switzerland were sent an information letter combining professional norms and peer comparison feedback about vitamin D testing (@mueller2023rct)
     - ATE from `itsCausal` is within the 95% CI of the ATE from the RCT
 
 <div class="small-space"></div>
 
-  - We re-estimate our research on low-value care with `itsCausal` and find similar results.
+<!--  - We re-estimate our research on low-value care with `itsCausal` and find similar results.-->
 :::
 
 :::
@@ -156,19 +203,20 @@ nocite: |
 
 ## User's guide
 
+::: {style="font-size: 80%;"}
 - We offer researchers and industry analysts in Public Health, Health Economics, and Health Services Research recommendations for the implementation of interrupted time-series.
 - We build tests and graphical representations of tests for the assumption of causal effects, especially for the "no-confounding" assumption.
 - We implement ML learners and provide guidance on how to implement them.
 :::
-
+:::
 
 
 ---
 
 ## Conclusion
 - **`itsCausal`:** A powerful tool for estimating causal effects without a control group.
-- **Benchmarking** of our method with published research and experimental evidence.
-- **User's guide:** Helps industry researchers for sound implementation of ITS in real world evidence, public health, health services research, and health Economics.
+- **Benchmarking** of the method with published research and experimental evidence.
+- **User's guide** for sound implementation of ITS in real-world evidence, public health, health services research, and health economics.
 
 <br>
 
