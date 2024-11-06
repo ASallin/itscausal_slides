@@ -30,15 +30,17 @@ knitr::opts_chunk$set(class.source = "chunkstyle")
 ```
 
 
-## Why we need interrupted time series: the "no control group" scenario
+## The "no control group" setting
 
 ::: {.incremental}
 - **Problem:** In many real-world scenarios, finding a credible control group to evaluate a policy is not feasible.
-- **Example:**. Health care policies often affect all providers simultaneously, like changes in physician compensation or changes in guidelines.
+- **Example:** Health care policies often affect all providers simultaneously, like changes in physician compensation or changes in guidelines.
 
 ![](img/bloodtest.jfif){height=200px width=auto .fragment}  ![](img/mri.jpg){height=200px width=auto .fragment} ![](img/syphilis.jpg){height=200px width=auto .fragment}
 
-- **Challenge:**  Standard interrupted time-series (ITS) may produce biased estimates because of poor prediction, poor forecasting, and simplification assumptions with panel data.
+- **Solution:** interrupted time series (ITS)
+
+- **Challenge:**  Standard interrupted time series (ITS) may produce biased estimates because of poor prediction, poor forecasting, and simplification assumptions with panel data.
 
 :::
 
@@ -78,15 +80,31 @@ See also @turner2021comparison
 
 :::
 
+
+---
+
+## `itsCausal` was born from the practical need for effective healthcare monitoring
+
+::: {.incremental}
+
+::: {style="font-size: 80%;"}
+  - Example: **two population-level interventions against low-value care (Vit. D testing) in Switzerland**.
+:::
+
+![](img/figure1.png){.fragment width=90%}
+
+:::
+
+
 ---
 
 ## With "`itsCausal`", we aim to deliver a set of recommendations for practitioners
 
 ::: {.incremental}
-- **Key Idea:**
-  - Provide guidance on the application of Interrupted Time Series
-  - Enhance the traditional model with a machine learning-based method to address the "no control group" scenario and improve counterfactual forecasting.
-  - Tailor the method to panel data where the number of units exceeds the number of time periods.
+- **Key Idea: create an R-package "`itsCausal`", which**
+  - Provides guidance on the application of Interrupted Time Series
+  - Enhances the traditional model with a machine learning-based method to address the "no control group" scenario and improve counterfactual forecasting.
+  - Tailors the method to panel data where the number of units exceeds the number of time periods.
 
 ::: {.notes}
 Widely used in real-world evidence, public health, health services research, health economics, and epidemiology.
@@ -95,7 +113,6 @@ Health insurance claims,
 
 Problem: its targets one average effect
 No untreated units: forecast the counterfactual.
-:::
 
 <div class="small-space"></div>
 
@@ -106,6 +123,7 @@ No untreated units: forecast the counterfactual.
   - Compare actual outcomes with predicted counterfactuals to estimate causal effects.
   - Aggregate results for the desired population and the desired time period.
 
+:::
 :::
 
 <!-- - **Our "product":** A set of recommendations for practicionners.-->
@@ -128,20 +146,7 @@ nocite: |
 ---
 
 
----
 
-## `itsCausal` was born from the practical need for effective healthcare monitoring
-
-::: {.incremental}
-
-::: {style="font-size: 80%;"}
-  - Monitor the effects of population-level interventions using rich (panel) claims data.
-  - Example: **two population-level interventions against low-value care (Vit. D testing) in Switzerland**.
-:::
-
-![](img/figure1.png){.fragment width=90%}
-
-:::
 
 ---
 
@@ -204,9 +209,9 @@ nocite: |
 ## User's guide
 
 ::: {style="font-size: 80%;"}
-- We offer researchers and industry analysts in Public Health, Health Economics, and Health Services Research recommendations for the implementation of interrupted time-series.
-- We build tests and graphical representations of tests for the assumption of causal effects, especially for the "no-confounding" assumption.
-- We implement ML learners and provide guidance on how to implement them.
+- Offer researchers and industry analysts recommendations for the implementation of interrupted time series.
+- Tests for the assumption of causal effects, especially for the "no-confounding" assumption.
+-  Provide guidance on how to implement ML learners.
 :::
 :::
 
