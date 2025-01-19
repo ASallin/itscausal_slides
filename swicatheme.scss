@@ -1,26 +1,5 @@
 /*-- scss:defaults --*/
 
-// fonts
-@font-face {
-    font-family: 'swica';
-    src: url('fonts/SWICA-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'swica';
-    src: url('fonts/SWICA-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'swica';
-    src: url('fonts/SWICA-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-}
 
 // Base font size
 $font-size-root: 12px !default;
@@ -35,6 +14,7 @@ $presentation-h2-font-size: 1.3em;
 $presentation-h3-font-size: 1.1em;
 $presentation-h4-font-size: 1em;
 $presentation-h5-font-size: 0.9em;
+$web-font-path: "";
 
 // colors
 $body-bg: #ffffff !default;
@@ -53,6 +33,29 @@ $presentation-block-margin: 24px;
 
 
 /*-- scss:rules --*/
+
+// fonts
+@font-face {
+    font-family: 'swica';
+    src: url('./fonts/SWICA-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'swica';
+    src: url('fonts/SWICA-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'swica';
+    src: url('fonts/SWICA-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
 // for html export
 html[data-export="pdf"] .preview {
     font-size: 1.15rem !important;
